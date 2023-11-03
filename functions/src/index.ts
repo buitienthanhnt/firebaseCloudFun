@@ -57,24 +57,27 @@ exports.listProducts = functions.https.onCall((data: any, context: any) => {
   return products;
 });
 
-exports.someMethod = functions.https.onRequest((req, res) => {
-  var stuff: any[] = [];
-  var db = admin.firestore();
-  db.collection("Users").doc("7vFjDJ63DmhcQiEHwl0M7hfL3Kt1").collection("blabla").get().then(snapshot => {
+interface UserItem{
+  id: Number,
+  name: string,
+  key: string,
+}
 
-      snapshot.forEach(doc => {
+exports.someMethod = functions.https.onCall((data: any, context: any) => {
+  var listUser: UserItem[] = [];
+  var db = admin.firestore();
+  return db.collection("listUser").get().then((snapshot: any) => {
+      snapshot.forEach((doc: any) => {
           var newelement = {
-              "id": doc.id,
-              "xxxx": doc.data().xxx,
-              "yyy": doc.data().yyy
+              key: doc.id,
+              name: doc.data().name,
+              id: doc.data().id,
           }
-          stuff = stuff.concat(newelement);
+          listUser.push(newelement);
       });
-      res.send(stuff)
-      return "";
-  }).catch(reason => {
-      res.send(reason)
-  })
+      // console.log('_____+',stuff);
+      return listUser;
+  });
 });
 
 

@@ -4,10 +4,10 @@
     "lint": "eslint --ext .js,.ts .",
     "build": "tsc",
     "build:watch": "tsc --watch",
-    "serve": "npm run build && firebase emulators:start --only functions,database",
+    "serve": "npm run build && firebase emulators:start --only functions,database,firestore --import=firebase-export-1698989525385Wt7RsP --export-on-exit=firebase-export-1698989525385Wt7RsP",
     "shell": "npm run build && firebase functions:shell",
     "start": "npm run shell",
-    "deploy": "firebase deploy --only functions,database",
+    "deploy": "firebase deploy --only functions,database,firestore",
     "logs": "firebase functions:log"
   },
   "engines": {

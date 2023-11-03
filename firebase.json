@@ -25,9 +25,16 @@
     "singleProjectMode": true,
     "database": {
       "port": 4200
+    },
+    "firestore": {
+      "port": 4600
     }
   },
   "database": {
     "rules": "database.rules.json"
+  },
+  "firestore": {
+    "rules": "firestore.rules",
+    "indexes": "firestore.indexes.json"
   }
 }
