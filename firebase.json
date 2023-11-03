@@ -28,6 +28,9 @@
     },
     "firestore": {
       "port": 4600
+    },
+    "auth": {
+      "port": 9099
     }
   },
   "database": {
